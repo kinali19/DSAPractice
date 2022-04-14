@@ -38,12 +38,12 @@
 //2nd Solution
 
 function find2ndMinimumNumber(arr){
-    if(arr.length === 1){
+    if(arr.length === 0 || arr.length === 1){
         return "Invalid input"
     }
 
     var minVal = arr[0];
-    var secondMinVal;
+    var secondMinVal = 0;
 
     for(var i = 1; i < arr.length; i++){
         if(minVal >= arr[i]){
@@ -57,7 +57,7 @@ function find2ndMinimumNumber(arr){
     return secondMinVal;
 }
 
-console.log(find2ndMinimumNumber([9,3,5,8,4,7,8]))
+console.log(find2ndMinimumNumber([3,9,8,8,5,3,3]))
 
 
 

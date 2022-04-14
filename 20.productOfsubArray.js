@@ -48,22 +48,25 @@ var productExceptSelf = function(nums) {
 }
 
 //simple way
-function productExceptSelf(nums){
+function productExceptSelf(nums){ 
+
+   if(nums === null || nums.length === 0) return [];
+
     var res = []; 
     var left = 1;
     var right = 1;
 
     for(var i = 0; i < nums.length; i++){
-        res[i] = left;
-        left = left*nums[i];
+        res[i] = left; 
+        left = left*nums[i]; 
     }
 
-    for(var i = nums.length-1; i>=0; i--){
-        res[i] = right * res[i];
-        right = right * nums[i];
+    for(var i = nums.length-1; i>=0; i--){  
+        res[i] = right * res[i]; 
+        right = right * nums[i]; 
     }   
     return res;
 } 
 
 
-console.log(productExceptSelf([4,2,1,6]))
+console.log(productExceptSelf([10,3,5,6,2]))

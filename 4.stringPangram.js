@@ -15,9 +15,13 @@
 
 
 function findmissingLetterofPangram(str){
+    if(str === null || str.length === 0) return "Invalid String";
+
     const letters = "abcdefghijklmnopqrstuvwxyz"
     var dic = {};
     var missingLetters = "";
+
+    if(str.length > 0) str = str.toLowerCase();
 
     for(let i=0; i < str.length; i++){
         const char = str.charAt(i).trim();
@@ -33,4 +37,4 @@ function findmissingLetterofPangram(str){
     return missingLetters;
 }
 
-console.log(findmissingLetterofPangram("az"))
+console.log(findmissingLetterofPangram("AZ"))
