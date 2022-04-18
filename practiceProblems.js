@@ -797,7 +797,7 @@ console.log("22: " + sumArraysumK([4,2,5,1,7,6,3],6))
 // Product of Array Except Self - LeetCode​​​​​​​ 
 
 function productOfSubArray(arr){
-    var res = [];
+    var res = [];   
     var left = 1;
     var right = 1;
 

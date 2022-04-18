@@ -28,6 +28,10 @@ function findUnqiueTuple(str, len){
             tuples.add(temp)
         }
     }       
-    return tuples;
+        let res = [];
+        tuples.forEach(function(value) {
+            res.push(value);
+        })
+    return res;
 }
 console.log(findUnqiueTuple("aabcde",3))
