@@ -1,61 +1,110 @@
-// given array of students and their marks in different subjects.
-// Findmaximum average of the student in the following format below . Use Math.floor() to convert fractional average to integer .
+// //Input :
 
-// Testcase: StudentScoreTest.java
-// {name, avg}
-// e.g.
+// // Given n non-negative integers representing an elevation map where the width of each bar is 1,
+// //  compute how much water it can trap after raining.
 
-// {“Alice”, “70”}   ,
-// {"Bob", "80"}   
-// {"Charles", "75"}  
-// {"Bob", "80"}  
-// {"Dane", 1},{"Dane", 2},{"Dane", 3}   -> avg = (1 + 2+ 3) / 3
 
-// So, here average marks for Alice, Bob, Charles and Dane are 70, 80, 75, 2 respectively. 
-//So the highest avg is 80 so it should be returned .
+// // Example 1:
 
-function findMaxAvgStudentScore(arr) {
-    if(arr == null || arr.length == 0) return 0;
 
-    var maxAvgScore = Number.NEGATIVE_INFINITY;
-    var map = new Map();
+// // Input: height = [0,1,0,2,1,0,1,3,2,1,2,1]
+// // Output: 6
+// // Explanation: The above 
 
-    for(var i=0; i < arr.length; i++){
-        var student = arr[i];
+// // Input: height = [4,2,0,3,2,5]
+// // Output: 9
 
-        if(student.length == 0 || student.length < 2) return 0;
 
-        var key = student[0];
-        var val = student[1];
 
-        if(key in map){
-            map[key].push(val);
+// function TrappingRain(arr){
+//     if(arr.length == 0) return 0;
+
+//     var i= 0;   //2
+//     var j = arr.length -1;  //
+//     var maxLeft = 0;
+//     var maxRight = 0;
+//     var water = 0;
+
+//     while(i < j){   
+//         if(arr[i] <= arr[j]){
+//             maxLeft = Math.max(maxLeft, arr[i])
+//             water += maxLeft - arr[i]; //0, 0, 1,
+//             i++;
+//         }
+//         else{
+//             maxRight = Math.max(maxRight, arr[j]);
+//             water += maxRight - arr[j];
+//             j--;
+//         }
+//     }
+//     return water;
+// }
+
+// //0 < 1 
+// //left = 1
+
+// console.log(TrappingRain([0,1,0,2,1,0,1,3,2,1,2,1]))
+
+
+
+//aabbccd -> d
+//iijjkkllmm-> 0
+
+function findNonRepeatingChar(str){
+    if(str == "" || str === null) return "invalid string";
+
+    if(str.length === 1) return str;
+
+    var dic = {};
+    for(var i=0; i < str.length; i++){
+        var ch = str.charAt(i);
+
+        if(ch in dic){
+            dic[ch] += 1;
         }
-        else map[key] = [val];
+        else{
+            dic[ch] = 1;
+        }
     }
-
-    for(student in map){
-        var sum = 0;
-        for(val of map[student]){
-            sum = sum + parseInt(val);
-        }
-        sum = sum / map[student].length
-        if(sum > maxAvgScore){
-            maxAvgScore = Math.floor(sum);
+    for(ch in dic){
+        if(dic[ch] === 1) {
+            return ch;
         }
     }
-    return maxAvgScore;
+    return 0;
 }
 
-console.log(findMaxAvgStudentScore(
-    [
-        ['a', '70'],
-        ['b', '80'],
-        ['c', '75'],
-        ['b', '80'],
-    ]
-))
+//console.log(findNonRepeatingChar("abbcddea"))
 
+//
+// Given an array nums with n objects colored red, white, or blue, sort them in-place so that objects of the same color are adjacent,
+// with the colors in the order red, white, and blue.
+// We will use the integers 0, 1, and 2 to represent the color red, white, and blue, respectively.
+// You must solve this problem without using the library's sort function.
+// Input: nums = [2,0,2,1,1,0]
+// Output: [0,0,1,1,2,2]
 
+// Input: nums = [2,0,1]
+// output: [0,1,2]
 
+function findSortedArr(arr){
+    if(arr.length === 0) return [];
 
+    var done = false;
+
+    while(!done){
+        done = true;
+        for(var i=1; i<arr.length; i++){
+            if(arr[i-1] > arr[i]){
+                done = false;
+                var temp = arr[i-1];
+                arr[i-1] = arr[i];
+                arr[i] = temp;
+            }
+        }
+    }
+    return arr;
+ 
+}
+
+console.log(findSortedArr([2,0,1,1,2,0,1,2]))

@@ -6,7 +6,7 @@
 // For ex :   
 // ABABCABABCD -> AB*C*D    
 // AB*C*D -> ABABCABABCD  
- 
+
 // Eg:   
 // input : AAAA  
 // output : A**  
@@ -22,41 +22,44 @@
 // abcba -> abcba  
 // aaaaaaaa -> a***   
 
-function decodeString(s){
+//Time Complexity O(n)
+//Space Complexity O(1)
+
+function decodeString(s) {
     var i = 0;
-    var j = 1; 
+    var j = 1;
 
     var output = s[i];
 
-    while(i < s.length && j < s.length){
-        if(s[i] != s[j]){
+    while (i < s.length && j < s.length) {
+
+        if (s[i] != s[j]) {
             output += s[j]
             j++;
-        }
-        
-        else {
-            var temp = j; 
+
+        } else {
+            
+            var temp = j;
             var shouldAdd = false;
-            while(s[i] == s[j] && i < s.length && j < s.length){
+
+            while (s[i] == s[j] && i < s.length && j < s.length) {
                 i++;
                 j++;
 
-                if(i == temp){
+                if (i == temp) {
                     shouldAdd = true;
-                    break;  
-                }    
+                    break;
+                }
             }
-            if(shouldAdd){
-                output += "*";   
+            if (shouldAdd) {
+                output += "*";
                 i = 0;
-            }
-            else{
-        
-                while(temp < j){
+
+            } else {
+                while (temp < j) {
                     output += s[temp];
                     temp++;
                 }
-
                 i = 0
             }
         }
@@ -72,5 +75,3 @@ console.log(decodeString("aaaabbbb"))
 console.log(decodeString("abcba"))
 console.log(decodeString("aaaaaaaa"))
 console.log(decodeString("abcabcabdabcabcabdefghi"))
-
-

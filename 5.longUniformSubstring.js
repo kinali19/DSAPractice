@@ -16,31 +16,30 @@ ex1 : s = "abc"
 output = [0, 1] 
   
 ex2 s = "aabbbc"  
-output = [2, 3] */  
+output = [2, 3] */
 
-function findLongUniformSubstring(str){
+function findLongUniformSubstring(str) {
 
-    if(str == null || str.length == 0) return [-1,0]
-    if(str.length == 1) return [0, 1] 
+    if (str == null || str.length == 0) return [-1, 0]
+    if (str.length == 1) return [0, 1]
 
     let idx = Number.MIN_VALUE;
     let count = 1;
     let maxCharCount = 1;
 
-    for(var i = 1; i< str.length; i++){
-        if(str.charAt(i) == str.charAt(i-1)) {
-            count++; 
-        }
-        else{
-            if(count > maxCharCount){
+    for (var i = 1; i < str.length; i++) {
+        if (str.charAt(i) == str.charAt(i - 1)) {
+            count++;
+        } else {
+            if (count > maxCharCount) {
                 maxCharCount = count;
                 idx = i - count;
             }
-           count = 1;
+            count = 1;
         }
     }
 
-        if(count > maxCharCount){
+    if (count > maxCharCount) {
         maxCharCount = count;
         idx = i - count;
     }
@@ -50,30 +49,29 @@ function findLongUniformSubstring(str){
 
 console.log(findLongUniformSubstring("abcd"))
 
+//Time Complexity O(n)
+//Space Complexity O(1)
 
-function findLongUniformSubstring(str){
+function findLongUniformSubstring(str) {
 
-    if(str == null || str.length == 0) return [-1,0]
-    if(str.length == 1) return [0, 1] 
-   
+    if (str == null || str.length == 0) return [-1, 0]
+    if (str.length == 1) return [0, 1]
+
     var idx = -1;
     var count = 1;
     var maxCount = 0;
-    for(var i=0; i<str.length; i++) {
-         if(str[i] == str[i+1]) count++;
-        else{
-           if(count > maxCount){
+
+    for (var i = 0; i < str.length; i++) {
+        if (str[i] == str[i + 1]) count++;
+        else {
+            if (count > maxCount) {
                 maxCount = count;
                 idx = i - count + 1
             }
-             count = 1;
+            count = 1;
         }
     }
     return [idx, maxCount];
- }
- 
- 
- console.log(findLongUniformSubstring("aaabbbbccda"))
+}
 
-
-
+console.log(findLongUniformSubstring("aaabbbbccda"))

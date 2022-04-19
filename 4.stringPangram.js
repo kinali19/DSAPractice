@@ -13,24 +13,26 @@
 
 //pangram means string contains all the letters of english alphabet.
 
+//Time Complexity O(n)
+//Space Complexity O(n)
 
-function findmissingLetterofPangram(str){
-    if(str === null || str.length === 0) return "Invalid String";
+function findmissingLetterofPangram(str) {
+    if (str === null || str.length === 0) return "Invalid String";
 
     const letters = "abcdefghijklmnopqrstuvwxyz"
     var dic = {};
     var missingLetters = "";
 
-    if(str.length > 0) str = str.toLowerCase();
+    if (str.length > 0) str = str.toLowerCase();
 
-    for(let i=0; i < str.length; i++){
+    for (let i = 0; i < str.length; i++) {
         const char = str.charAt(i).trim();
-        if(!(char in dic)){
+        if (!(char in dic)) {
             dic[char] = true;
         }
     }
-    for(var i = 0; i < letters.length; i++) {
-        if(!(letters[i] in dic)){
+    for (var i = 0; i < letters.length; i++) {
+        if (!(letters[i] in dic)) {
             missingLetters = missingLetters + letters[i]
         }
     }

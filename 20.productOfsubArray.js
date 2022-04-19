@@ -9,12 +9,12 @@
 
 //brute force approch 0(n2)
 
-var productExceptSelf = function(nums) {
-    var result=[]
-    for(var i=0; i<nums.length; i++){
+var productExceptSelf = function (nums) {
+    var result = []
+    for (var i = 0; i < nums.length; i++) {
         var product = 1;
-        for(var j=0; j < nums.length; j++){
-            if(i !== j) {
+        for (var j = 0; j < nums.length; j++) {
+            if (i !== j) {
                 product *= nums[j];
             }
         }
@@ -24,49 +24,53 @@ var productExceptSelf = function(nums) {
 };
 
 
-var productExceptSelf = function(nums) {
+var productExceptSelf = function (nums) {
     var res = []
-    
+
     var mulTillNow = 1;
     var i = 0;
-    while(i < nums.length){
+    while (i < nums.length) {
         res.push(mulTillNow);
         mulTillNow *= nums[i];
         i++;
     }
-    
+
     i = nums.length - 2;
-    mulTillNow = nums[nums.length -1]
-    
-    while(i >= 0){
+    mulTillNow = nums[nums.length - 1]
+
+    while (i >= 0) {
         res[i] = res[i] * mulTillNow;
         mulTillNow *= nums[i];
         i--;
     }
-    
+
     return res;
 }
 
 //simple way
-function productExceptSelf(nums){ 
 
-   if(nums === null || nums.length === 0) return [];
+//Time: O(n)
+//Space: O(n)
 
-    var res = []; 
+function productExceptSelf(nums) {
+
+    if (nums === null || nums.length === 0) return [];
+
+    var res = [];
     var left = 1;
     var right = 1;
 
-    for(var i = 0; i < nums.length; i++){
-        res[i] = left; 
-        left = left*nums[i]; 
+    for (var i = 0; i < nums.length; i++) {
+        res[i] = left;
+        left = left * nums[i];
     }
 
-    for(var i = nums.length-1; i>=0; i--){  
-        res[i] = right * res[i]; 
-        right = right * nums[i]; 
-    }   
+    for (var i = nums.length - 1; i >= 0; i--) {
+        res[i] = right * res[i];
+        right = right * nums[i];
+    }
     return res;
-} 
+}
 
 
-console.log(productExceptSelf([10,3,5,6,2]))
+console.log(productExceptSelf([10, 3, 5, 6, 2]))

@@ -11,44 +11,65 @@
 
 //https://leetcode.com/problems/find-median-from-data-stream
 
-var MedianFinder = function() {
+var MedianFinder = function () {
     this.maxHeap = new MaxPriorityQueue();
     this.minHeap = new MinPriorityQueue();
     console.log(this.maxHeap);
 }
 
 MedianFinder.prototype.addNum = function (num) {
-    if(this.maxHeap.empty() || this.maxHeap.front().element >= num){
+    if (this.maxHeap.empty() || this.maxHeap.front().element >= num) {
         this.maxHeap.eneque(num);
-    }
-    else{
+    } else {
         this.minHeap.eneque(num);
     }
 
-    if(this.maxHeap.size() > this.minHeap.size() + 1){
+    if (this.maxHeap.size() > this.minHeap.size() + 1) {
         this.minHeap.eneque(this.maxHeap.dequeue().element);
-    }
-    else if(this.minHeap.size() > this.maxHeap.size()){
+    } else if (this.minHeap.size() > this.maxHeap.size()) {
         this.maxHeap.eneque(this.minHeap.dequeue().element);
     }
 }
 
 MedianFinder.prototype.findMedian = function () {
-    if(this.minHeap.size() > this.maxHeap.size()){
+    if (this.minHeap.size() > this.maxHeap.size()) {
         return this.minHeap.front().element;
     }
-    if(this.maxHeap.size() > this.minHeap.size()){
+    if (this.maxHeap.size() > this.minHeap.size()) {
         return this.maxHeap.front().element;
     }
-    if(this.maxHeap.size() === this.minHeap.size()){
+    if (this.maxHeap.size() === this.minHeap.size()) {
         return this.minHeap.front().element / 2 + this.maxHeap.front().element / 2
     }
 }
+var MedianFinder = function () {
+    var arr = [];
+}
+
+MedianFinder.prototype.addNum = function (num) {
+
+    let ary = this.arr;
+
+    for (let n = 0; n < ary.length; n++) {
+        if (ary[n] > num) {
+            return ary.splice(n, 0, num);
+        }
+    }
+    ary.push(num);
+};
+
+MedianFinder.prototype.findMedian = function () {
+    let len = this.arr.length;
+    if (len % 2 != 0) return this.arr[Math.floor(len / 2)];
+    return (this.arr[len / 2] + this.arr[(len / 2) - 1]) / 2;
+
+};
+
 
 var medianFinder = new MedianFinder();
-medianFinder.addNum(1);    // arr = [1]
-medianFinder.addNum(2);    // arr = [1, 2]
+medianFinder.addNum(1); // arr = [1]
+medianFinder.addNum(2); // arr = [1, 2]
 medianFinder.findMedian(); // return 1.5 (i.e., (1 + 2) / 2)
-medianFinder.addNum(3);    // arr[1, 2, 3]
+medianFinder.addNum(3); // arr[1, 2, 3]
 medianFinder.findMedian(); // return 2.0
 console.log(medianFinder);

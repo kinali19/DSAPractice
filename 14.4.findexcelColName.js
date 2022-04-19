@@ -1,28 +1,30 @@
 // Q: Problem Statement: Return the name of the excel column? 
 // Input number : 4 
 // O/p Column : “D” 
- 
+
 // Input number : 26 
 // O/p Column : “Z” 
- 
-// Input number : 52 
-// O/p Column : “AZ”​​​​​​​ 
 
-function findExcelColName(n){
+// Input number : 52 
+// O/p Column : “AZ”​​​​​​
+
+//Time: O(log n)
+//Space: O(n)
+
+function findExcelColName(n) {
     var codeA = 'A'.charCodeAt(0);
     var codeZ = 'Z'.charCodeAt(0);
 
     var len = codeZ - codeA + 1;
 
     var colName = [];
-    
-    while(n > 0){
+
+    while (n > 0) {
         let rem = n % len;
-        if(rem == 0) {
+        if (rem == 0) {
             colName.push(String.fromCharCode(codeZ));
             n = Math.floor((n / len) - 1);
-        }
-        else{
+        } else {
             colName.push(String.fromCharCode((rem - 1) + codeA))
             n = Math.floor(n / len)
         }

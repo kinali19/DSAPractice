@@ -6,21 +6,22 @@
 // a                        a1  
 // aabbaaa            a2b2a3  
 
+//Time Complexity O(n)
+//Space Complexity O(n)
 
-function countChars(str){
-
-    if(str == null || str.length == 0) return 0;
+function countChars(str) {
+    if (str == null || str.length == 0) return 0;
 
     var result = "";
     var count = 1;
 
-    for(var i=0; i < str.length; i++, count++){
+    for (var i = 0; i < str.length; i++, count++) {
         const ch = str.charAt(i);
-        const next = i + 1 < str.length ? str.charAt(i+1) : -1;
-        if(ch != next){
+        const next = i + 1 < str.length ? str.charAt(i + 1) : -1;
+        if (ch != next) {
             result += ch + count;
             count = 0;
-        }   
+        }
     }
     return result;
 }

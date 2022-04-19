@@ -28,6 +28,8 @@
 //     return isNegative ? (parseInt(result) * -1) : parseInt(result);
 // }
 
+//Time: O(n)
+//Space: O(1)
 
 function atoi(str) {
 	var result = 0

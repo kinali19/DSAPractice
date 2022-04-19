@@ -21,20 +21,23 @@
 // }
 
 //Time Complexity O(n)
-function findNonRepeatingChar(str){
+//Space Complexity O(n)
+function findNonRepeatingChar(str) {
+    if(str === null || str === "") return "invalid string";
+    if(str.length === 1) return str;
+     
     var dic = {};
-    for(const char of str) {
-        if(char in dic) {
+    for (const char of str) {
+        if (char in dic) {
             dic[char] += 1
-        }
-        else {
+        } else {
             dic[char] = 1;
         }
     }
     for (const char in dic) {
-        if(dic[char] === 1) return char;
+        if (dic[char] === 1) return char;
     }
     return 0;
 }
 
-console.log(findNonRepeatingChar("abbccpddee"))
+console.log(findNonRepeatingChar("ababccpddee"))

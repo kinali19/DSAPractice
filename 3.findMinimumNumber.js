@@ -37,27 +37,40 @@
 
 //2nd Solution
 
-function find2ndMinimumNumber(arr){
-    if(arr.length === 0 || arr.length === 1){
+//Time: O(n)
+//Space: O(1)
+
+function find2ndMinimumNumber(arr) {
+    if (arr.length === 0 || arr.length === 1) {
         return "Invalid input"
     }
 
     var minVal = arr[0];
-    var secondMinVal = 0;
+    var secondMinVal = Number.NEGATIVE_INFINITY;
 
-    for(var i = 1; i < arr.length; i++){
-        if(minVal >= arr[i]){
+    for (var i = 1; i < arr.length; i++) {
+        if (minVal >= arr[i]) {
             secondMinVal = minVal;
             minVal = arr[i];
-        }
-        else if(secondMinVal > arr[i]){
+        } else if (secondMinVal > arr[i]) {
             secondMinVal = arr[i]
         }
-    } 
+    }
     return secondMinVal;
 }
 
-console.log(find2ndMinimumNumber([3,9,8,8,5,3,3]))
+console.log(find2ndMinimumNumber([3, 9, 8, 8, 5, 3, 3]))
 
+//Time: nlogn
+//space: O(1)
+function findKthElement(arr, k) {
+    if (arr.length === 0 || arr.length === 1) {
+        return "Invalid input"
+    }
 
-
+    var arr = arr.sort();
+    if (k > 0) {
+        return arr[k - 1]
+    }
+}
+console.log(findKthElement([1, 2, 5, 4, 7], 4))

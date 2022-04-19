@@ -8,36 +8,40 @@
 // Input : DD 
 // Output : [0,-2]  
 
+//Time Complexity O(n)
+//Space Complexity O(1)
+//    1 
+// -1 0 1
+//   -1
+function findCoordinates(input) {
 
-function findCoordinates(input){
-
-    if(input == null) return [0,0]
+    if (input == null) return [0, 0]
 
     var x = 0
     var y = 0
 
     for (var i = 0; i < input.length; i++) {
-    var c = input[i]
+        var c = input[i]
 
-    switch (c) {
-        case 'U':
-        y += 1
-        break;
+        switch (c) {
+            case 'U':
+                y += 1
+                break;
 
-        case 'D':
-        y -= 1
-        break;
-        
-        case 'L':
-        x -= 1
-        break;
-        
-        case 'R':
-        x += 1
-        break;
+            case 'D':
+                y -= 1
+                break;
+
+            case 'L':
+                x -= 1
+                break;
+
+            case 'R':
+                x += 1
+                break;
+        }
     }
-}
-return [x, y]
+    return [x, y]
 }
 
 console.log(findCoordinates("UDLL"))
