@@ -539,7 +539,7 @@ const findIdenticalPairs2 = (nums) => {
 }
 
 console.log("identicalPairs1: " + findIdenticalPairs1([1, 2, 3, 1, 1, 3]))
-console.log("identicalPairs2: " + findIdenticalPairs1([1, 2, 3, 1, 1, 3]))
+console.log("identicalPairs2: " + findIdenticalPairs2([1, 2, 3, 1, 1, 3]))
 
 //valid Anagram
 // An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.

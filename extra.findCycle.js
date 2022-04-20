@@ -43,3 +43,34 @@ function findCycleLength(arr){
 }
 
 console.log(findCycleLength([1, 0]))
+
+//2nd approch using map
+function findCycle(arr){
+    var map = new Map();
+    var temp =0;
+    var isCycle = false;
+    
+    for(var i=0; i < arr.length; ){
+        if(i in map){
+            temp = i;
+            isCycle = true;
+            break;
+        } else {
+            map[i] = true;
+            i = arr[i]
+        }
+    }
+   if(isCycle){
+        var length = 1;
+        var x = arr[temp];
+        while(x !== temp){
+            length++;
+            x = arr[x]
+        }
+        return length;
+    }
+    else return -1;
+  
+}
+
+console.log(findCycle([1,3,2,1]))
