@@ -22,6 +22,7 @@ function isPalindrome(str) {
 
 function longestPalindromeString(str) {
     if (str.length == 0) return "";
+    if(str.length === 1) return str;
 
     var result = ""
     var resLength = 0

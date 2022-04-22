@@ -18,22 +18,23 @@ function findMostvisitedIP(addresses) {
 
     for (const add of addresses) {
         const ip = add.split(" ")[0];
-        if (ip in map) {
-            map[ip] += 1;
+        if (map.has(ip)) {
+            map.set(ip, map.get(ip) + 1)
         } else {
-            map[ip] = 1;
+            map.set(ip, 1)
         }
 
-        if (map[ip] > maxvisitedCount)
-            maxvisitedCount = map[ip];
+        if (map.get(ip) > maxvisitedCount)
+            maxvisitedCount = map.get(ip);
     }
 
-    for (ip in map) {
-        if (map[ip] == maxvisitedCount)
-            mostVisitedIP.push(ip);
-    }
+    map.forEach((val, key) => {
+            if(val === maxvisitedCount){
+                mostVisitedIP.push(key);
+            }
+        })
 
     return mostVisitedIP.join(",");
 }
 
-console.log(findMostvisitedIP(["10.0.0.2 satish", "10.0.0.1 Vinay", "10.0.0.2 Deepa", "10.0.0.3 Vinay"]))
+console.log(findMostvisitedIP(["10.0.0.1 satish", "10.0.0.3 Vinay", "10.0.0.2 Deepa", "10.0.0.3 Vinay"]))

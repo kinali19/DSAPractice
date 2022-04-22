@@ -13,6 +13,6 @@ function timesTwo(b){
 }
 
 // let composition = (...fns) => (x) => fns.reduce((y,f) => f(y), x)
-let composition = (...fns) => fns.reduceRight((add,mul) => (x) => mul(add(x)))
+let composition = (...fns) => fns.reduceRight((y,f) => (x) => f(y(x)))
 
 console.log(composition(addOne,timesTwo)(1))

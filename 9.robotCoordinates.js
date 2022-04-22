@@ -15,6 +15,18 @@
 //   -1
 function findCoordinates(input) {
 
+    if(input.indexOf(" ") >= 0){
+        var newPath = input.split(" ");
+        input = "";
+        for(var i=0; i<newPath.length; i++){
+             newPath[i].split("").map((item) => {
+                if(item === "U" || item === "R" || item === "L" || item  === "D"){
+                    input += item;
+                }
+            })
+        }
+    }
+
     if (input == null) return [0, 0]
 
     var x = 0
@@ -43,5 +55,4 @@ function findCoordinates(input) {
     }
     return [x, y]
 }
-
-console.log(findCoordinates("UDLL"))
+console.log(findCoordinates("UP DOWN 2xRIGHT"))
