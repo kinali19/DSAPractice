@@ -19,12 +19,10 @@ function findUnqiueTuple(str, len) {
     var tuples = new Set();
 
     for (var i = 0; i < str.length; i++) {
-
         var temp = str[i]
         for (var j = i + 1; j < i + len && j < str.length; j++) {
             temp += str[j]
         }
-
         if (temp.length == len) {
             tuples.add(temp)
         }
@@ -36,3 +34,4 @@ function findUnqiueTuple(str, len) {
     return res;
 }
 console.log(findUnqiueTuple("aabcde", 3))
+
