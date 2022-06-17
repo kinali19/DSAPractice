@@ -54,6 +54,26 @@ console.log(composition(addOne,timesTwo)(1))
 console.log(composition1([addOne,timesTwo])(1))
 console.log(composition2([addOne,timesTwo])(1))
 
+function addOne(a){
+return a + 1;
+}
+
+function timesTwo(a){
+return a * 2;
+}
+
+function addTwo(a){
+return a + 2;
+}
+
+var compose = (arr) => (x) => {
+return arr.reduceRight((prevValue, currentValue) => {
+return currentValue(prevValue)
+}, x);
+}
+
+console.log(compose([addOne, timesTwo, addTwo])(5)
+
 /* Problem Name is &&& Function Composition &&& PLEASE DO NOT REMOVE THIS LINE. */
 // Instructions to candidate
 
